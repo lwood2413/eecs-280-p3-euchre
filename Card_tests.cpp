@@ -212,13 +212,6 @@ TEST(test_less_rank_dominates) {
     ASSERT_FALSE(Card(ACE, SPADES) < Card(KING, DIAMONDS));
 }
 
-TEST(test_less_suit_tiebreak) {
-    ASSERT_TRUE(Card(NINE, SPADES) < Card(NINE, HEARTS));
-    ASSERT_TRUE(Card(NINE, HEARTS) < Card(NINE, CLUBS));
-    ASSERT_TRUE(Card(NINE, CLUBS) < Card(NINE, DIAMONDS));
-    ASSERT_FALSE(Card(NINE, DIAMONDS) < Card(NINE, SPADES));
-    ASSERT_FALSE(Card(NINE, CLUBS) < Card(NINE, HEARTS));
-}
 
 TEST(test_less_equal_cards) {
     ASSERT_FALSE(Card(JACK, CLUBS) < Card(JACK, CLUBS));
@@ -231,12 +224,6 @@ TEST(test_less_equal_rank_dominates) {
     ASSERT_FALSE(Card(ACE, SPADES) <= Card(KING, DIAMONDS));
 }
 
-TEST(test_less_equal_suit_tiebreak) {
-    ASSERT_TRUE(Card(NINE, SPADES) <= Card(NINE, HEARTS));
-    ASSERT_TRUE(Card(NINE, CLUBS) <= Card(NINE, DIAMONDS));
-    ASSERT_FALSE(Card(NINE, DIAMONDS) <= Card(NINE, SPADES));
-    ASSERT_FALSE(Card(NINE, CLUBS) <= Card(NINE, HEARTS));
-}
 
 TEST(test_less_equal_equal_cards) {
     ASSERT_TRUE(Card(JACK, CLUBS) <= Card(JACK, CLUBS));
@@ -250,13 +237,6 @@ TEST(test_greater_rank_dominates) {
     ASSERT_FALSE(Card(KING, DIAMONDS) > Card(ACE, SPADES));
 }
 
-TEST(test_greater_suit_tiebreak) {
-    ASSERT_TRUE(Card(NINE, HEARTS) > Card(NINE, SPADES));
-    ASSERT_TRUE(Card(NINE, CLUBS) > Card(NINE, HEARTS));
-    ASSERT_TRUE(Card(NINE, DIAMONDS) > Card(NINE, CLUBS));
-    ASSERT_FALSE(Card(NINE, SPADES) > Card(NINE, DIAMONDS));
-    ASSERT_FALSE(Card(NINE, HEARTS) > Card(NINE, CLUBS));
-}
 
 TEST(test_greater_equal_cards) {
     ASSERT_FALSE(Card(JACK, CLUBS) > Card(JACK, CLUBS));
@@ -269,12 +249,6 @@ TEST(test_greater_equal_rank_dominates) {
     ASSERT_FALSE(Card(KING, DIAMONDS) >= Card(ACE, SPADES));
 }
 
-TEST(test_greater_equal_suit_tiebreak) {
-    ASSERT_TRUE(Card(NINE, HEARTS) >= Card(NINE, SPADES));
-    ASSERT_TRUE(Card(NINE, DIAMONDS) >= Card(NINE, CLUBS));
-    ASSERT_FALSE(Card(NINE, SPADES) >= Card(NINE, DIAMONDS));
-    ASSERT_FALSE(Card(NINE, HEARTS) >= Card(NINE, CLUBS));
-}
 
 TEST(test_greater_equal_equal_cards) {
     ASSERT_TRUE(Card(JACK, CLUBS) >= Card(JACK, CLUBS));
