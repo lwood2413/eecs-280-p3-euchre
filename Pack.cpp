@@ -29,3 +29,41 @@ Card Pack::deal_one(){
     next++;
     return dealt;
 }
+
+void Pack::reset(){
+    //Sets next to first index of pack
+    next = 0;
+}
+
+void Pack::shuffle(){
+//Constants for number of shuffles and half of deck
+const int SHUFFLE_COUNTER = 7;
+const int HALF = PACK_SIZE / 2;
+
+//Performs 7 in-shuffles
+for(int round = 0; round < SHUFFLE_COUNTER; ++round){
+    //New array to store shuffled cards
+    std::array <Card, PACK_SIZE> shuffled;
+
+    for(int i = 0; i < HALF; i++){
+        //Bottom half of cards
+        shuffled[2 * i] = cards[HALF + i];
+        //Top half of cards
+        shuffled[2 * i + 1] = cards[i];
+    }
+    //Sets cards equal to the shuffle array
+    cards = shuffled;
+}
+//Resets next index to new first card
+reset();
+}
+
+bool Pack::empty() const{
+    // Checks if the next card is outside of pack, meaning no cards remain
+    if(next >= PACK_SIZE){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
