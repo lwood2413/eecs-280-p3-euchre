@@ -8,8 +8,9 @@
       "type": "lldb",
       "request": "launch",
       "name": "Debug",
-      "program": "${workspaceFolder}/main.exe",
-      "args": [],
+      "program": "${workspaceFolder}/euchre.exe",
+      "args": ["PACK_FILENAME", "[shuffle|noshuffle]", "POINTS_TO_WIN", 
+      "NAME1", "TYPE1", "NAME2", "TYPE2", "NAME3", "TYPE3", "NAME4", "TYPE4"],
       "cwd": "${workspaceFolder}",
       "env": {}
     }
