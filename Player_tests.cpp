@@ -61,7 +61,7 @@ TEST(test_make_trump_round2_left_bower) {
   delete p;
 }
 
-TEST(test_make_trump_round2_passscrew_dealer) {
+TEST(test_make_trump_round2_pass_screw_dealer) {
   Player *p = Player_factory("Euchre", "Simple");
   p->add_card(Card(ACE, HEARTS));    
   p->add_card(Card(ACE, DIAMONDS));     
@@ -113,6 +113,7 @@ TEST(test_add_and_discard_upcard_is_lowest) {
   ASSERT_EQUAL(p->lead_card(DIAMONDS), Card(TEN, DIAMONDS));
   delete p;
 }
+
 
 TEST(test_lead_card_left_bower_is_trump) {
   Player *p = Player_factory("Wolverine", "Simple");
