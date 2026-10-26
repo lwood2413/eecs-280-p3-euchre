@@ -73,34 +73,32 @@ class Game {
 
 
 
-    int make_trump(int dealer, const Card &upcard, Suit &trump){
-        //Iterates through rounds
-        for(int round = 1; round <= 2; ++round){
-            //Goes through each player, asking if want to make trump
-            for(int i = 1; i <= NUM_PLAYERS; ++i){
-                int p = (dealer + i) % 4;
-
-                //If current player makes trump, prints order up message
-                if(players[p]-> make_trump(upcard, p == dealer, 
-                round, trump)){
-                    cout << players[p]-> get_name() << " orders up " << trump << endl;
-
-                    //Then makes player discard a card if first round
-                    if(round == 1){
-                        players[dealer]-> add_and_discard(upcard);
-                    }
-                    cout << endl;
-                    //Returns the team that ordered up
-                    return p % 2;
-                }
-                //Otherwise, say the player passes
-                cout << players[p]-> get_name() << " passes" << endl;
-            }
+    int ask_round(int dealer, const Card &upcard, int round, Suit &trump){
+    for(int i = 1; i <= NUM_PLAYERS; ++i){
+        int p = (dealer + i) % 4;
+        if(players[p]->make_trump(upcard, p == dealer, round, trump)){
+            cout << players[p]->get_name() << " orders up " << trump << endl;
+            return p;
         }
-        assert(false);
-        return -1;
+        cout << players[p]->get_name() << " passes" << endl;
     }
+    return -1;
+}
 
+int make_trump(int dealer, const Card &upcard, Suit &trump){
+    for(int round = 1; round <= 2; ++round){
+        int maker = ask_round(dealer, upcard, round, trump);
+        if(maker != -1){
+            if(round == 1){
+                players[dealer]->add_and_discard(upcard);
+            }
+            cout << endl;
+            return maker % 2;
+        }
+    }
+    assert(false);
+    return -1;
+}
 
 
 

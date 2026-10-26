@@ -178,9 +178,12 @@ bool operator<(const Card &lhs, const Card &rhs){
   if(lhs.get_rank() < rhs.get_rank()){
     return true;
   }
-  else{
-    return false;
+  else if(lhs.get_rank() == rhs.get_rank()){
+    if(lhs.get_suit() < rhs.get_suit()){
+      return true;
+    }
   }
+    return false;
   
 }
 
@@ -273,7 +276,7 @@ bool Card_less(const Card &a, const Card &b, Suit trump){
   if(!a.is_trump(trump) && b.is_trump(trump)){
     return true;
   }
-  //If none above apply, resorts to oveloaded < operator
+  //If none above apply, resorts to overloaded < operator
   return a < b;
 }
 
@@ -283,10 +286,12 @@ bool Card_less(const Card &a, const Card &b, const Card &led_card, Suit trump){
     return Card_less(a, b, trump);
   }
   //Checks if either card is the led suit
-  if(a.get_suit() == led_card.get_suit() && b.get_suit() != led_card.get_suit()){
+  if(a.get_suit(trump) == led_card.get_suit(trump) && b.get_suit(trump) 
+  != led_card.get_suit(trump)){
     return false;
   }
-  if(a.get_suit() != led_card.get_suit() && b.get_suit() == led_card.get_suit()){
+  if(a.get_suit(trump) != led_card.get_suit(trump) && b.get_suit(trump) 
+  == led_card.get_suit(trump)){
     return true;
   }
   //If none above apply, resorts to overloaded < operator

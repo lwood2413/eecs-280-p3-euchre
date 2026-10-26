@@ -146,7 +146,7 @@ Card play_card(const Card &led_card, Suit trump){
     //Loops through hand
     for(size_t i = 0; i < hand.size(); ++i){
         /*If current card is the same suit of led card and no best follow card exists
-        or current card is greater than current best follow, seets best follow
+        or current card is greater than current best follow, sets best follow
         to current card*/
         if(hand[i].get_suit(trump) == led_suit){
             if(best_follow == -1 || 
@@ -154,7 +154,7 @@ Card play_card(const Card &led_card, Suit trump){
                 best_follow =i;
             }
         }
-        /*Otherwise, chacks if current card is less than lowest card, 
+        /*Otherwise, checks if current card is less than lowest card, 
         and sets lowest to current card*/
         if(Card_less(hand[i], hand[lowest], led_card, trump)) {
             lowest = i;
@@ -209,7 +209,7 @@ int round, Suit &order_up_suit) const {
     //Prints player's hand for reference
     print_hand();
     //Prompts player to enter decision
-    cout << "Human Player " << name << ", please enter a suit, or \"pass\":\n";
+    cout << "Human player " << name << ", please enter a suit, or \"pass\":\n";
 
     string decision;
     //Reads in decision
